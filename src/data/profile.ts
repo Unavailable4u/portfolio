@@ -7,5 +7,5 @@ export const profile = {
   github: "https://github.com/Unavailable4u",
   linkedin: "https://www.linkedin.com/in/unavailable4u/",
   summary:
-    "High-achieving university fresher at RUET with a strong academic record and a passion for STEM fields, backed by expertise in mathematics, programming, machine learning, and AI prompt engineering. Certified mentor in MIT's Technovation app-building competition, Aspire Leadership Program alumnus, and multi-time national Olympiad awardee.",
+    "High-achieving university student at RUET with a strong academic record and a passion for STEM fields, backed by expertise in mathematics, programming, machine learning, and AI prompt engineering. Certified mentor in MIT's Technovation app-building competition, Aspire Leadership Program alumnus, and multi-time national Olympiad awardee.",
 };
