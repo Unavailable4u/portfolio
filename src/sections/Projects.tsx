@@ -1,68 +1,62 @@
-import SectionHeading from "../components/SectionHeading";
-import Tag from "../components/Tag";
+import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import ProjectCard from "../components/ProjectCard";
+import ProjectModal from "../components/ProjectModal";
 import Reveal from "../components/Reveal";
+import SectionHeading from "../components/SectionHeading";
 import { projects } from "../data/projects";
+import { OPEN_PROJECT_EVENT } from "../lib/events";
+import type { ProjectItem } from "../types";
+
+const listed = projects.filter((p) => p.category !== "research");
+const featured = listed.filter((p) => p.featured);
+const rest = listed.filter((p) => !p.featured);
 
 function Projects() {
-  const featured = projects.filter((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
+  const [selected, setSelected] = useState<ProjectItem | null>(null);
+
+  // Lets the command palette and the Research section open a project by id.
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      const match = projects.find((p) => p.id === id);
+      if (match) setSelected(match);
+    };
+    window.addEventListener(OPEN_PROJECT_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_PROJECT_EVENT, onOpen);
+  }, []);
 
   return (
     <section id="projects" className="px-6 md:px-12 py-24 md:py-36">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <SectionHeading tag="01 · PROJECTS" title="Things I've built." description="A mix of full-stack systems, desktop tools, and applied ML experiments." />
+          <SectionHeading
+            tag="01 · PROJECTS"
+            title="Things I've built."
+            description="Full-stack AI systems, a healthcare device platform, desktop tools and applied ML. Select any card for the full story."
+          />
         </Reveal>
 
-        <Reveal delay={0.15}>
-          <div className="space-y-7 mb-16">
-            {featured.map((project) => (
-              <div key={project.title} className="bg-bg-card border border-line rounded-md p-8 md:p-12 hover:border-[#2a323d] transition-colors duration-300">
-                <span className="font-mono text-xs text-amber tracking-wide block mb-4">FEATURED</span>
-                <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3 tracking-tight">{project.title}</h3>
-                <p className="text-text-dim text-sm mb-6">{project.stack}</p>
-                <ul className="space-y-2 mb-7">
-                  {project.bullets.map((bullet) => (
-                    <li key={bullet} className="text-sm text-text-dim leading-relaxed pl-5 relative">
-                      <span className="absolute left-0 text-cyan">→</span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Tag key={tag} label={tag} />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
+        <div className="space-y-7 mb-7">
+          {featured.map((project, i) => (
+            <Reveal key={project.id} delay={i * 0.06}>
+              <ProjectCard project={project} onOpen={setSelected} featured />
+            </Reveal>
+          ))}
+        </div>
 
-        <Reveal delay={0.2}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {rest.map((project) => (
-              <div key={project.title} className="bg-bg-card border border-line rounded-md p-7 hover:border-[#2a323d] transition-colors duration-300">
-                <h3 className="font-display text-lg font-semibold mb-2">{project.title}</h3>
-                <p className="text-text-dim text-xs mb-4">{project.stack}</p>
-                <ul className="space-y-2 mb-5">
-                  {project.bullets.map((bullet) => (
-                    <li key={bullet} className="text-sm text-text-dim leading-relaxed pl-5 relative">
-                      <span className="absolute left-0 text-cyan">→</span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Tag key={tag} label={tag} />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {rest.map((project, i) => (
+            <Reveal key={project.id} delay={(i % 2) * 0.08}>
+              <ProjectCard project={project} onOpen={setSelected} />
+            </Reveal>
+          ))}
+        </div>
       </div>
+
+      <AnimatePresence>
+        {selected && <ProjectModal key={selected.id} project={selected} onClose={() => setSelected(null)} />}
+      </AnimatePresence>
     </section>
   );
 }
