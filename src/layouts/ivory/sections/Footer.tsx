@@ -9,8 +9,8 @@ function Footer() {
       <div className="wrap">
         <div className="fgrid">
           <div>
-            <a className="mono" href="#top" aria-label="Back to top">
-              S<i>S</i>
+            <a className="sig-mark" href="#top" aria-label="Back to top">
+              {profile.shortName}
             </a>
             <p>AI systems builder and ETE student at RUET, building multi-agent software and research tooling.</p>
           </div>

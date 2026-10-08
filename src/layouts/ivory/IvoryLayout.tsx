@@ -21,7 +21,6 @@ import Recognition from "./sections/Recognition";
 import Research from "./sections/Research";
 import Services from "./sections/Services";
 import Skills from "./sections/Skills";
-import Stats from "./sections/Stats";
 import Work from "./sections/Work";
 import { useReveal } from "./useReveal";
 
@@ -46,7 +45,6 @@ function IvoryLayout() {
         <Hero />
         <About />
         <Services />
-        <Stats />
         <Work />
         <Research />
         <Recognition />

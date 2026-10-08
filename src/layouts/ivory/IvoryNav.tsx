@@ -2,6 +2,7 @@ import { useState } from "react";
 import { profile } from "../../data/profile";
 import LayoutSwitcher from "../LayoutSwitcher";
 import { navLinks } from "./content";
+import IvoryCvMenu from "./IvoryCvMenu";
 
 function IvoryNav({ active }: { active: string }) {
   const [open, setOpen] = useState(false);
@@ -10,7 +11,7 @@ function IvoryNav({ active }: { active: string }) {
     <header className="nav">
       <div className="wrap">
         <a className="mono" href="#top" aria-label={`${profile.shortName}, home`}>
-          S<i>S</i>
+          {profile.shortName}
         </a>
         <nav aria-label="Primary">
           <ul>
@@ -29,9 +30,7 @@ function IvoryNav({ active }: { active: string }) {
         </nav>
         <div className="nav-actions">
           <LayoutSwitcher className="switch" size={18} strokeWidth={1.4} />
-          <a className="btn sm cta" href={`mailto:${profile.email}`}>
-            Say hello
-          </a>
+          <IvoryCvMenu />
           <button
             type="button"
             className="burger"

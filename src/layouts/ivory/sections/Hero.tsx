@@ -29,9 +29,6 @@ function Hero() {
             Read the research
           </a>
         </div>
-        <div className="sig" aria-hidden="true">
-          Shuaib {profile.shortName}
-        </div>
       </div>
       <div className="hero-media">
         <img src={photos.portrait} alt={photos.portraitAlt} width={825} height={1100} fetchPriority="high" />

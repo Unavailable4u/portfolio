@@ -1,6 +1,6 @@
-import { Fragment } from "react";
 import { profile } from "../../../data/profile";
 import { cvStyles } from "../../../lib/cv";
+import Icon from "../Icon";
 
 function Cta() {
   return (
@@ -29,24 +29,22 @@ function Cta() {
             <p>{profile.availability}.</p>
           </div>
           <div className="cta-act rv d1">
-            <a className="btn solid" href={`mailto:${profile.email}`}>
-              Say hello{" "}
-              <span className="arrow" aria-hidden="true">
-                →
-              </span>
+            <a className="cta-mail" href={`mailto:${profile.email}`}>
+              <Icon name="mail" />
+              {profile.email}
             </a>
-            <small>{profile.email}</small>
-            <small>
-              Download CV:{" "}
-              {cvStyles.map((style, i) => (
-                <Fragment key={style.id}>
-                  {i > 0 && " · "}
-                  <a href={style.file} download>
-                    {style.label}
-                  </a>
-                </Fragment>
+            <div className="cta-cv">
+              <h3>Download my CV</h3>
+              {cvStyles.map((style) => (
+                <a key={style.id} href={style.file} download>
+                  <div>
+                    <b>{style.label}</b>
+                    <span>{style.description}</span>
+                  </div>
+                  <Icon name="download" />
+                </a>
               ))}
-            </small>
+            </div>
           </div>
         </div>
       </div>

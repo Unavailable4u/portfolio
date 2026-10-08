@@ -139,17 +139,6 @@ export function projectImage(p: ProjectItem, kind: "card" | "row") {
 export const primaryLink = (p: ProjectItem): ProjectLink | undefined => p.links?.[0];
 export const secondaryLink = (p: ProjectItem): ProjectLink | undefined => p.links?.[1];
 
-/* ── Highlights ─────────────────────────────────────────────────── */
-
-const minimeStat = (label: string) => byId("minime")?.stats?.find((s) => s.label === label)?.value ?? "";
-
-export const highlights = [
-  { icon: "layers", value: minimeStat("agent modules"), label: "Agent modules" },
-  { icon: "check", value: minimeStat("tests"), label: "Tests in MiniMe" },
-  { icon: "team", value: String(cofounded), label: "Teams co-founded" },
-  { icon: "globe", value: "9,362", label: "Aspire finalists, of 45,228" },
-];
-
 /* ── Research ───────────────────────────────────────────────────── */
 
 export const researchStatusLabel: Record<ResearchStatus, string> = {

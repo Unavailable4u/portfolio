@@ -4,13 +4,6 @@ import CvMenu from "../components/CvMenu";
 import { profile } from "../data/profile";
 import { useScramble } from "../hooks/useScramble";
 
-const facts = [
-  { value: "3", label: "ventures co-founded" },
-  { value: "70+", label: "agent modules in MiniMe" },
-  { value: "1", label: "paper under review" },
-  { value: "4,400+", label: "automated tests written" },
-];
-
 function Hero() {
   const scrambled = useScramble(profile.name);
 
@@ -63,15 +56,6 @@ function Hero() {
           </a>
         </div>
       </div>
-
-      <dl className="relative z-10 mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl border-t border-line pt-8">
-        {facts.map((f) => (
-          <div key={f.label} className="flex flex-col-reverse">
-            <dt className="font-mono text-[11px] text-text-faint leading-snug">{f.label}</dt>
-            <dd className="font-display text-3xl text-text mb-1">{f.value}</dd>
-          </div>
-        ))}
-      </dl>
     </section>
   );
 }
