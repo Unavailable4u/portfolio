@@ -36,6 +36,17 @@ export const projects: ProjectItem[] = [
         url: "mailto:sayadssb@gmail.com?subject=MiniMe%20demo%20access",
       },
     ],
+    media: {
+      thumbnail: "/projects/minime/landing.webp",
+      hoverImage: "/projects/minime/plan.webp",
+      screenshots: [
+        "/projects/minime/landing.webp",
+        "/projects/minime/login.webp",
+        "/projects/minime/chat.webp",
+        "/projects/minime/research.webp",
+        "/projects/minime/plan.webp",
+      ],
+    },
   },
   {
     id: "fbebc",
@@ -94,6 +105,17 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["Python", "Flet", "Desktop App"],
     links: [{ kind: "github", label: "GitHub", url: "https://github.com/Unavailable4u/FocusOS" }],
+    media: {
+      thumbnail: "/projects/focusos/dashboard.webp",
+      hoverImage: "/projects/focusos/expenses.webp",
+      screenshots: [
+        "/projects/focusos/dashboard.webp",
+        "/projects/focusos/pomodoro.webp",
+        "/projects/focusos/tasks.webp",
+        "/projects/focusos/expenses.webp",
+        "/projects/focusos/journal.webp",
+      ],
+    },
   },
   {
     id: "spherex-blink",
@@ -119,6 +141,16 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["Python", "scikit-learn", "ML"],
     links: [{ kind: "github", label: "GitHub", url: "https://github.com/Unavailable4u/CodeAlpha_CreditScoringModel" }],
+    media: {
+      thumbnail: "/projects/credit-scoring/roc.webp",
+      screenshots: [
+        "/projects/credit-scoring/correlation.webp",
+        "/projects/credit-scoring/smote-conclusion.webp",
+        "/projects/credit-scoring/feature-importance.webp",
+        "/projects/credit-scoring/roc.webp",
+      ],
+      video: "/projects/credit-scoring/demo.mp4",
+    },
   },
   {
     id: "handwriting",
@@ -135,6 +167,16 @@ export const projects: ProjectItem[] = [
         url: "https://github.com/Unavailable4u/CodeAlpha_HandwrittenCharacterRecognition",
       },
     ],
+    media: {
+      thumbnail: "/projects/handwriting/predictions.webp",
+      screenshots: [
+        "/projects/handwriting/dataset.webp",
+        "/projects/handwriting/training-curves.webp",
+        "/projects/handwriting/predictions.webp",
+        "/projects/handwriting/confidence.webp",
+      ],
+      video: "/projects/handwriting/demo.mp4",
+    },
   },
   {
     id: "discord-uploader",
