@@ -12,6 +12,7 @@ Built with React 19, TypeScript, Vite, Tailwind CSS v4 and Framer Motion. Deploy
 - Skills grouped by depth, a milestone timeline and a live GitHub contribution graph
 - Command palette (`Ctrl/⌘ + K`), scroll progress bar, active-section nav and section-aware tab titles
 - **Auto-generated CVs.** Three PDF styles (Classic, Modern, Academic) are built from the same data files as the site, so they can never drift apart
+- **Multiple portfolio styles.** One icon in the header switches between complete layouts (Midnight and Ivory so far) that all read the same data. The choice is remembered and can be shared as `?style=ivory`
 - Custom 404, Open Graph preview image, sitemap and structured data
 - Self-hosted fonts and Vercel Analytics
 
@@ -37,6 +38,16 @@ Everything on the site and in the CVs comes from `src/data/`:
 | `skills.ts` | Core / Working knowledge / Familiar with |
 | `certifications.ts` | Certificates, images and verification links |
 | `honors.ts`, `education.ts`, `milestones.ts`, `now.ts` | The rest |
+
+### Add a portfolio style
+
+Every style lives in `src/layouts/` and reads the same files in `src/data/`, so content changes show up everywhere.
+
+1. Create `src/layouts/<name>/<Name>Layout.tsx` with a default-exported component, and put `<LayoutSwitcher className="..." />` (from `src/layouts/LayoutSwitcher`) in its header so visitors can move on to the next style.
+2. Add one entry to `src/layouts/registry.ts` (`id`, `name`, `themeColor`, `colorScheme`, and `Component: lazy(() => import("./<name>/<Name>Layout"))`). The icon cycles through the list in order.
+3. If the style has a different page colour, add a `html[data-layout="<id>"]` background rule next to the Ivory one in `src/index.css` so the first paint matches.
+
+Scope the style's CSS under its own root class (Ivory uses `.ivory`) so it cannot leak into the others. Ivory's few design-specific blurbs and photo paths are in `src/layouts/ivory/content.ts`; its photos and placeholder illustrations are in `public/ivory/`.
 
 ### Add project media
 

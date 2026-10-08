@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 import { profile } from "../data/profile";
+import LayoutSwitcher from "../layouts/LayoutSwitcher";
 import { cvStyles } from "../lib/cv";
 import { shortcutLabel } from "../lib/platform";
 import { sections } from "../lib/sections";
@@ -68,6 +69,7 @@ function Nav({ active, onOpenPalette }: NavProps) {
           >
             Contact
           </a>
+          <LayoutSwitcher className="inline-flex items-center justify-center w-9 h-9 border border-line rounded-sm text-text-dim hover:border-cyan hover:text-cyan transition-colors" />
           <button
             type="button"
             className="xl:hidden p-2 -mr-2 text-text-dim hover:text-text"

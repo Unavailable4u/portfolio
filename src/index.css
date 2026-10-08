@@ -27,6 +27,14 @@ body {
   @apply bg-bg text-text font-body antialiased;
 }
 
+/* Page colours for other portfolio styles (see src/layouts/registry.ts). Kept here, not in the
+   lazy layout chunk, so the first paint and overscroll already match. */
+html[data-layout="ivory"],
+html[data-layout="ivory"] body {
+  background: #f5f0e6;
+  color: #16130f;
+}
+
 section[id],
 footer[id] {
   scroll-margin-top: 4.5rem;
