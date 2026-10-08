@@ -22,7 +22,7 @@ function FeaturedCard({ project, index }: { project: ProjectItem; index: number 
 
   return (
     <article className={`fcard rv${index > 0 ? ` d${index}` : ""}`}>
-      <div className="shot">
+      <div className={`shot${image.fit === "contain" ? " contain" : ""}`}>
         <img
           src={image.src}
           alt={image.real ? `${title} screenshot` : `${title} (placeholder screenshot)`}
@@ -65,7 +65,10 @@ function ProjectRow({ project }: { project: ProjectItem }) {
     <div className="mp-row">
       <div
         className="mp-thumb"
-        style={{ backgroundImage: `url(${image.src})` }}
+        style={{
+          backgroundImage: `url(${image.src})`,
+          ...(image.fit === "contain" ? { backgroundSize: "contain", backgroundRepeat: "no-repeat" } : {}),
+        }}
         role="img"
         aria-label={image.real ? `${title} screenshot` : `${title} placeholder screenshot`}
       />

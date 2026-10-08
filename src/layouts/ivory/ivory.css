@@ -123,6 +123,7 @@ html[data-layout="ivory"]{scroll-behavior:smooth;scroll-padding-top:84px}
 .ivory .shot{aspect-ratio:16/10;overflow:hidden;background:var(--panel);border:1px solid var(--rule);position:relative}
 .ivory .shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .ivory .fcard:hover .shot img{transform:scale(1.04)}
+.ivory .shot.contain img{object-fit:contain;padding:12%}
 .ivory .chip{position:absolute;left:14px;top:14px;background:var(--paper);color:var(--ink);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;font-weight:500;border:1px solid var(--rule)}
 .ivory .fmeta{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:22px 0 14px}
 .ivory .fmeta h3{font-size:30px}
@@ -170,6 +171,10 @@ html[data-layout="ivory"]{scroll-behavior:smooth;scroll-padding-top:84px}
 .ivory .lim li::before{content:"";position:absolute;left:0;top:20px;width:12px;height:1px;background:var(--accent)}
 .ivory .paper-foot{margin-top:40px;padding-top:24px;border-top:1px solid var(--rule);display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;position:relative}
 .ivory .paper-foot p{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--muted)}
+.ivory .ongoing{max-width:1040px;margin:28px auto 0;padding:32px 40px;border:1px solid var(--rule);background:var(--paper);display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ivory .ongoing .og-label{display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.ivory .ongoing h4{font-size:28px}
+.ivory .ongoing p{color:var(--muted);max-width:620px;margin-top:6px}
 .ivory .recog{padding:120px 0}
 .ivory .q{border:1px solid var(--rule);padding:38px 32px 32px;background:var(--panel);display:flex;flex-direction:column}
 .ivory .q .mark{font-family:var(--serif);font-size:84px;line-height:.6;color:var(--accent);height:40px;display:block;opacity:.9}

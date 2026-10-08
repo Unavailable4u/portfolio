@@ -37,8 +37,8 @@ export const projects: ProjectItem[] = [
       },
     ],
     media: {
-      thumbnail: "/projects/minime/landing.webp",
-      hoverImage: "/projects/minime/plan.webp",
+      thumbnail: "/projects/minime/logo.svg",
+      thumbnailFit: "contain",
       screenshots: [
         "/projects/minime/landing.webp",
         "/projects/minime/login.webp",
@@ -90,6 +90,9 @@ export const projects: ProjectItem[] = [
       { kind: "github", label: "App", url: "https://github.com/shaikh-dotcom/Maa42" },
       { kind: "github", label: "MaterniBot backend", url: "https://github.com/shaikh-dotcom/maternibot" },
     ],
+    media: {
+      video: "/projects/medsophia/demo.mp4",
+    },
   },
   {
     id: "focusos",
@@ -187,5 +190,9 @@ export const projects: ProjectItem[] = [
     bullets: ["Automation tool that sends entire folders of images and videos in sequence to get around the 10-file upload limit."],
     tags: ["Python", "Automation"],
     links: [{ kind: "github", label: "GitHub", url: "https://github.com/Unavailable4u/discord-auto-uploader" }],
+    media: {
+      thumbnail: "/projects/discord-uploader/uploader-running.webp",
+      screenshots: ["/projects/discord-uploader/uploader-running.webp"],
+    },
   },
 ];

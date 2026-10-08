@@ -53,6 +53,8 @@ export interface ProjectLink {
 export interface ProjectMedia {
   /** Image shown on the card, e.g. /projects/minime/thumb.webp */
   thumbnail?: string;
+  /** How the thumbnail fills the card. Use "contain" for logos and SVGs so they are not cropped. */
+  thumbnailFit?: "cover" | "contain";
   /** Alternate image the card crossfades to on hover. */
   hoverImage?: string;
   /** Extra screenshots shown in the project modal gallery. */
@@ -142,16 +144,6 @@ export interface Milestone {
 
 export type ResearchStatus = "under-review" | "preprint-draft" | "published";
 
-export interface ModelPoint {
-  name: string;
-  paramsK: number;
-  /** Mean accuracy over 5 seeds, in percent. */
-  accuracy: number;
-  /** Standard deviation over 5 seeds, in percentage points. */
-  std: number;
-  ours?: boolean;
-}
-
 export interface ResearchItem {
   id: string;
   title: string;
@@ -162,10 +154,7 @@ export interface ResearchItem {
   status: ResearchStatus;
   statusNote: string;
   summary: string;
-  contributions: string[];
   stats: ProjectStat[];
-  /** Results the paper reports that do not favour the proposed model. */
-  honestFindings: string[];
   keywords: string[];
   links?: ProjectLink[];
 }

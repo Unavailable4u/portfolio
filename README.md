@@ -7,7 +7,7 @@ Built with React 19, TypeScript, Vite, Tailwind CSS v4 and Framer Motion. Deploy
 ## Features
 
 - Projects with media cards (hover image, demo video, screenshot gallery) and a detail modal
-- Research section with an interactive chart and the paper's negative results included
+- Research section with a short summary of the paper under review and the ongoing FBEBC research
 - Certificates grid with a lightbox, verification links and a competitions tab
 - Skills grouped by depth, a milestone timeline and a live GitHub contribution graph
 - Command palette (`Ctrl/⌘ + K`), scroll progress bar, active-section nav and section-aware tab titles
@@ -34,7 +34,7 @@ Everything on the site and in the CVs comes from `src/data/`:
 | `profile.ts` | Name, headline, summary, links, availability, "now" note |
 | `experience.ts` | Roles (set `current: true` for ongoing ones) |
 | `projects.ts` | Projects, links and media |
-| `research.ts` | Papers and the chart's data |
+| `research.ts` | Papers under review |
 | `skills.ts` | Core / Working knowledge / Familiar with |
 | `certifications.ts` | Certificates, images and verification links |
 | `honors.ts`, `education.ts`, `milestones.ts`, `now.ts` | The rest |

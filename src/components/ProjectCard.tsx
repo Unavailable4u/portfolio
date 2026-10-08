@@ -33,6 +33,7 @@ function ProjectCard({ project, onOpen, featured = false }: ProjectCardProps) {
   const media = project.media;
   const hasImage = Boolean(media?.thumbnail);
   const hasVideo = Boolean(media?.video);
+  const contain = media?.thumbnailFit === "contain";
 
   return (
     <motion.article
@@ -48,7 +49,9 @@ function ProjectCard({ project, onOpen, featured = false }: ProjectCardProps) {
             alt=""
             loading="lazy"
             decoding="async"
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${
+            className={`absolute inset-0 w-full h-full transition-all duration-500 ${
+              contain ? "object-contain p-8 md:p-12" : "object-cover"
+            } ${
               media!.hoverImage ? "group-hover:opacity-0" : "group-hover:scale-105"
             }`}
           />
@@ -74,6 +77,12 @@ function ProjectCard({ project, onOpen, featured = false }: ProjectCardProps) {
         <div className="flex items-center gap-3 mb-4">
           {project.status && <StatusBadge status={project.status} />}
           {featured && <span className="font-mono text-[11px] text-amber tracking-wide">FEATURED</span>}
+          {!hasImage && hasVideo && (
+            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-cyan tracking-wide">
+              <FiPlay aria-hidden="true" size={11} />
+              DEMO VIDEO
+            </span>
+          )}
         </div>
 
         <h3 className={`font-display font-semibold tracking-tight mb-2 ${featured ? "text-2xl md:text-3xl" : "text-lg md:text-xl"}`}>

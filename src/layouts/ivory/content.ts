@@ -68,13 +68,17 @@ export const facts = [
 
 /* ── Projects ───────────────────────────────────────────────────── */
 
-/** The three large cards, in order. Every other project becomes a row under "More projects". */
-export const featuredIds = ["minime", "fbebc", "medsophia"];
+/** The three large cards, in order. Research projects (such as FBEBC) are never listed here. */
+export const featuredIds = ["minime", "medsophia", "focusos"];
 
 const byId = (id: string) => projects.find((p) => p.id === id);
+const listed = projects.filter((p) => p.category !== "research");
 
 export const featuredProjects = featuredIds.map(byId).filter((p): p is ProjectItem => Boolean(p));
-export const otherProjects = projects.filter((p) => !featuredIds.includes(p.id));
+/** Every other project becomes a row under "More projects". */
+export const otherProjects = listed.filter((p) => !featuredIds.includes(p.id));
+/** Ongoing research that has no paper yet, shown in the Research section. */
+export const ongoingResearch = projects.filter((p) => p.category === "research");
 
 /** Short copy written for this design. Anything missing here falls back to the data file. */
 const copy: Record<string, { title?: string; blurb: string; stack?: string }> = {
@@ -85,7 +89,7 @@ const copy: Record<string, { title?: string; blurb: string; stack?: string }> = 
   fbebc: {
     title: "FBEBC",
     blurb: "Governing LLM-driven code evolution: an untrusted proposer, a trusted evaluator, six admission gates.",
-    stack: "Python · Docker · SQLite · Groq API · Preprint in draft",
+    stack: "Python · Docker · SQLite · Groq API",
   },
   medsophia: {
     title: "MedSophia Maa42",
@@ -125,15 +129,16 @@ export const statusView: Record<ProjectStatus, { label: string; tone: "prog" | "
  * illustrations, so add `media.thumbnail` in projects.ts to replace it.
  */
 const placeholderFor: Record<string, string> = {
-  fbebc: "research-chart",
   medsophia: "phone-app",
   "spherex-blink": "sky",
 };
 
 export function projectImage(p: ProjectItem, kind: "card" | "row") {
-  if (p.media?.thumbnail) return { src: p.media.thumbnail, real: true };
+  if (p.media?.thumbnail) {
+    return { src: p.media.thumbnail, real: true, fit: p.media.thumbnailFit ?? "cover" };
+  }
   const name = placeholderFor[p.id] ?? (kind === "card" ? "desktop" : "code");
-  return { src: `/ivory/placeholders/${name}.svg`, real: false };
+  return { src: `/ivory/placeholders/${name}.svg`, real: false, fit: "cover" as const };
 }
 
 export const primaryLink = (p: ProjectItem): ProjectLink | undefined => p.links?.[0];

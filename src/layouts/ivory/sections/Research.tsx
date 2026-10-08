@@ -1,8 +1,6 @@
 import { Fragment } from "react";
 import { research } from "../../../data/research";
-import { linkProps, researchStatusLabel, sentences } from "../content";
-
-const findingLabels = ["Limitation.", "Limitation.", "Scope."];
+import { blurbOf, linkProps, ongoingResearch, researchStatusLabel, sentences, titleOf } from "../content";
 
 function Research() {
   return (
@@ -11,7 +9,7 @@ function Research() {
         <div className="shead rv">
           <span className="label center">Research</span>
           <h2>
-            Published thinking, <em>honestly</em> reported
+            Papers and <em>ongoing</em> research
           </h2>
         </div>
 
@@ -45,12 +43,6 @@ function Research() {
                       <span key={keyword}>{keyword}</span>
                     ))}
                   </div>
-                  <h4 style={{ marginTop: 30 }}>Contributions</h4>
-                  <ul className="lim" style={{ marginTop: 0 }}>
-                    {paper.contributions.map((text) => (
-                      <li key={text}>{text}</li>
-                    ))}
-                  </ul>
                 </div>
                 <div>
                   <h4>Key results</h4>
@@ -59,13 +51,6 @@ function Research() {
                       <li key={stat.label}>
                         <b>{stat.value}</b>
                         {stat.label}
-                      </li>
-                    ))}
-                  </ul>
-                  <ul className="lim" aria-label="Limitations">
-                    {paper.honestFindings.map((text, i) => (
-                      <li key={text}>
-                        <strong>{findingLabels[i] ?? "Limitation."}</strong> {text}
                       </li>
                     ))}
                   </ul>
@@ -82,6 +67,27 @@ function Research() {
                     </span>
                   </a>
                 </div>
+              )}
+            </article>
+          );
+        })}
+
+        {ongoingResearch.map((item) => {
+          const repo = item.links?.[0];
+          return (
+            <article key={item.id} className="ongoing rv">
+              <div>
+                <span className="og-label">Ongoing research · {researchStatusLabel["preprint-draft"]}</span>
+                <h4>{titleOf(item)}</h4>
+                <p>{blurbOf(item)}</p>
+              </div>
+              {repo && (
+                <a className="btn sm" href={repo.url} {...linkProps(repo.url)}>
+                  View repository{" "}
+                  <span className="arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
               )}
             </article>
           );

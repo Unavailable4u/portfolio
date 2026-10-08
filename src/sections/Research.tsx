@@ -1,7 +1,6 @@
 import { FiArrowRight } from "react-icons/fi";
 import ProjectLinks from "../components/ProjectLinks";
 import Reveal from "../components/Reveal";
-import ResearchChart from "../components/ResearchChart";
 import SectionHeading from "../components/SectionHeading";
 import StatusBadge from "../components/StatusBadge";
 import Tag from "../components/Tag";
@@ -26,7 +25,7 @@ function Research() {
           <SectionHeading
             tag="02 · RESEARCH"
             title="Questions I'm working on."
-            description="A paper under review and open research on AI systems, reported with the results that didn't go my way left in."
+            description="A paper under review and open research on AI systems."
           />
         </Reveal>
 
@@ -53,25 +52,9 @@ function Research() {
               </p>
               <p className="font-mono text-xs text-text-faint mb-10">{paper.affiliation}</p>
 
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 mb-10">
-                <div className="lg:col-span-2">
-                  <p className="text-text-dim leading-relaxed mb-6">{paper.summary}</p>
-                  <span className="font-mono text-[11px] text-text-faint uppercase tracking-wide block mb-3">Contributions</span>
-                  <ul className="space-y-3">
-                    {paper.contributions.map((c) => (
-                      <li key={c} className="text-sm text-text-dim leading-relaxed pl-5 relative">
-                        <span aria-hidden="true" className="absolute left-0 text-cyan">→</span>
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="lg:col-span-3 bg-bg border border-line-soft rounded-md p-4 md:p-6">
-                  <ResearchChart />
-                </div>
-              </div>
+              <p className="text-text-dim leading-relaxed max-w-3xl mb-10">{paper.summary}</p>
 
-              <dl className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 py-6 border-y border-line-soft mb-10">
+              <dl className="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-6 py-6 border-y border-line-soft mb-10">
                 {paper.stats.map((s) => (
                   <div key={s.label} className="flex flex-col-reverse">
                     <dt className="font-mono text-[11px] text-text-faint leading-snug">{s.label}</dt>
@@ -79,17 +62,6 @@ function Research() {
                   </div>
                 ))}
               </dl>
-
-              <div className="border-l-2 border-amber pl-5 mb-10">
-                <span className="font-mono text-[11px] text-amber uppercase tracking-wide block mb-3">What the paper also reports</span>
-                <ul className="space-y-2.5">
-                  {paper.honestFindings.map((f) => (
-                    <li key={f} className="text-sm text-text-dim leading-relaxed">
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
 
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex flex-wrap gap-2">
