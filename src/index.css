@@ -35,6 +35,12 @@ html[data-layout="ivory"] body {
   color: #16130f;
 }
 
+html[data-layout="gilded"],
+html[data-layout="gilded"] body {
+  background: #0a0908;
+  color: #efe6d6;
+}
+
 section[id],
 footer[id] {
   scroll-margin-top: 4.5rem;

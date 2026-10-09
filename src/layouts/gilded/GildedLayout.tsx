@@ -1,31 +1,32 @@
+import "@fontsource/anton";
+import "@fontsource/pinyon-script";
 import "@fontsource-variable/cormorant-garamond";
 import "@fontsource-variable/cormorant-garamond/wght-italic.css";
-import "@fontsource-variable/dm-sans";
-import "@fontsource/pinyon-script";
-import "./ivory.css";
+import "@fontsource-variable/montserrat";
+import "@fontsource-variable/oswald";
+import "./gilded.css";
 import { useEffect, useRef } from "react";
 import { profile } from "../../data/profile";
 import { useActiveSection } from "../../hooks/useActiveSection";
+import { useReveal } from "../../hooks/useReveal";
 import { navIds } from "./content";
+import GildedNav from "./GildedNav";
 import IconSprite from "./IconSprite";
-import IvoryNav from "./IvoryNav";
 import About from "./sections/About";
+import Band from "./sections/Band";
 import Certificates from "./sections/Certificates";
 import Cta from "./sections/Cta";
 import Education from "./sections/Education";
 import Experience from "./sections/Experience";
 import Footer from "./sections/Footer";
 import Hero from "./sections/Hero";
-import Now from "./sections/Now";
-import Recognition from "./sections/Recognition";
 import Research from "./sections/Research";
-import Services from "./sections/Services";
 import Skills from "./sections/Skills";
+import Toc from "./sections/Toc";
 import Work from "./sections/Work";
-import { useReveal } from "../../hooks/useReveal";
 
-/** Ivory: warm paper, serif display, terracotta accent. Content comes from src/data/. */
-function IvoryLayout() {
+/** Gilded: near-black with brushed gold, condensed display type and a cut-out portrait. Content comes from src/data/. */
+function GildedLayout() {
   const rootRef = useRef<HTMLDivElement>(null);
   const active = useActiveSection(navIds);
   useReveal(rootRef);
@@ -35,24 +36,23 @@ function IvoryLayout() {
   }, []);
 
   return (
-    <div ref={rootRef} className="ivory">
+    <div ref={rootRef} className="gilded">
       <a className="skip" href="#main">
         Skip to content
       </a>
       <IconSprite />
-      <IvoryNav active={active} />
+      <GildedNav active={active} />
       <main id="main">
         <Hero />
-        <About />
-        <Services />
+        <Toc />
         <Work />
-        <Research />
-        <Recognition />
+        <Band />
+        <About />
         <Experience />
+        <Research />
         <Skills />
         <Certificates />
         <Education />
-        <Now />
         <Cta />
       </main>
       <Footer />
@@ -60,4 +60,4 @@ function IvoryLayout() {
   );
 }
 
-export default IvoryLayout;
+export default GildedLayout;
