@@ -41,6 +41,18 @@ html[data-layout="gilded"] body {
   color: #efe6d6;
 }
 
+html[data-layout="crimson"],
+html[data-layout="crimson"] body {
+  background: #0b0505;
+  color: #efe2cc;
+}
+
+html[data-layout="ember"],
+html[data-layout="ember"] body {
+  background: #0d0907;
+  color: #f4ece6;
+}
+
 section[id],
 footer[id] {
   scroll-margin-top: 4.5rem;

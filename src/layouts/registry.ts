@@ -46,6 +46,20 @@ export const layouts: LayoutDef[] = [
     colorScheme: "dark",
     Component: lazy(() => import("./gilded/GildedLayout")),
   },
+  {
+    id: "crimson",
+    name: "Crimson",
+    themeColor: "#0b0505",
+    colorScheme: "dark",
+    Component: lazy(() => import("./crimson/CrimsonLayout")),
+  },
+  {
+    id: "ember",
+    name: "Ember",
+    themeColor: "#0d0907",
+    colorScheme: "dark",
+    Component: lazy(() => import("./ember/EmberLayout")),
+  },
 ];
 
 export const defaultLayout = layouts[0];

@@ -12,7 +12,7 @@ Built with React 19, TypeScript, Vite, Tailwind CSS v4 and Framer Motion. Deploy
 - Skills grouped by depth, a milestone timeline and a live GitHub contribution graph
 - Command palette (`Ctrl/⌘ + K`), scroll progress bar, active-section nav and section-aware tab titles
 - **Auto-generated CVs.** Three PDF styles (Classic, Modern, Academic) are built from the same data files as the site, so they can never drift apart
-- **Multiple portfolio styles.** One icon in the header switches between complete layouts (Midnight, Ivory and Gilded so far) that all read the same data. The choice is remembered and can be shared as `?style=ivory`
+- **Multiple portfolio styles.** One icon in the header switches between complete layouts (Midnight, Ivory, Gilded, Crimson and Ember so far) that all read the same data. The choice is remembered and can be shared as `?style=ivory`
 - Custom 404, Open Graph preview image, sitemap and structured data
 - Self-hosted fonts and Vercel Analytics
 
@@ -45,9 +45,9 @@ Every style lives in `src/layouts/` and reads the same files in `src/data/`, so 
 
 1. Create `src/layouts/<name>/<Name>Layout.tsx` with a default-exported component, and put `<LayoutSwitcher className="..." />` (from `src/layouts/LayoutSwitcher`) in its header so visitors can move on to the next style.
 2. Add one entry to `src/layouts/registry.ts` (`id`, `name`, `themeColor`, `colorScheme`, and `Component: lazy(() => import("./<name>/<Name>Layout"))`). The icon cycles through the list in order.
-3. If the style has a different page colour, add a `html[data-layout="<id>"]` background rule next to the Ivory and Gilded ones in `src/index.css` so the first paint matches.
+3. If the style has a different page colour, add a `html[data-layout="<id>"]` background rule next to the Ivory, Gilded, Crimson and Ember ones in `src/index.css` so the first paint matches.
 
-Scope the style's CSS under its own root class (Ivory uses `.ivory`) so it cannot leak into the others. Each style keeps its few design-specific blurbs and photo paths in its own `content.ts` (`src/layouts/ivory/`, `src/layouts/gilded/`); photos and placeholder illustrations live in `public/ivory/` and `public/gilded/`.
+Scope the style's CSS under its own root class (Ivory uses `.ivory`) so it cannot leak into the others. Each style keeps its few design-specific blurbs and photo paths in its own `content.ts` (`src/layouts/ivory/`, `src/layouts/gilded/`, `src/layouts/crimson/`, `src/layouts/ember/`); photos and placeholder illustrations live in `public/ivory/`, `public/gilded/`, `public/crimson/` and `public/ember/`.
 
 ### Add project media
 
